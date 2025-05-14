@@ -1,12 +1,12 @@
 import { connect } from "cloudflare:sockets";
 
 // Variables
-const rootDomain = "raikazustore.xyz"; // Ganti dengan domain utama kalian
-const serviceName = "nautica"; // Ganti dengan nama workers kalian
-const apiKey = "C00y2SC2ZR-qSTskfRPIUbXxodunkHm8XpcxTL3d"; // Ganti dengan Global API key kalian (https://dash.cloudflare.com/profile/api-tokens)
+const rootDomain = "raikazu.me"; // Ganti dengan domain utama kalian
+const serviceName = "vip"; // Ganti dengan nama workers kalian
+const apiKey = "6240f72c4df19ca80ebee9648d159df6fd42d"; // Ganti dengan Global API key kalian (https://dash.cloudflare.com/profile/api-tokens)
 const apiEmail = "wendiwolfrah@gmail.com"; // Ganti dengan email yang kalian gunakan
 const accountID = "bc3329a8651dd6163e2ffaa0a136241e"; // Ganti dengan Account ID kalian (https://dash.cloudflare.com -> Klik domain yang kalian gunakan)
-const zoneID = "59500d7af11b64e4d0c936a25ded9a4d"; // Ganti dengan Zone ID kalian (https://dash.cloudflare.com -> Klik domain yang kalian gunakan)
+const zoneID = "1fa92b725f8bb47e775512c735c66df6"; // Ganti dengan Zone ID kalian (https://dash.cloudflare.com -> Klik domain yang kalian gunakan)
 let isApiReady = false;
 let proxyIP = "";
 let cachedProxyList = [];
@@ -22,7 +22,7 @@ const DNS_SERVER_PORT = 53;
 const PROXY_HEALTH_CHECK_API = "https://id1.foolvpn.me/api/v1/check";
 const CONVERTER_URL =
   "https://script.google.com/macros/s/AKfycbwwVeHNUlnP92syOP82p1dOk_-xwBgRIxkTjLhxxZ5UXicrGOEVNc5JaSOu0Bgsx_gG/exec";
-const DONATE_LINK = "https://trakteer.id/dickymuliafiqri/tip";
+const DONATE_LINK = "https://wa.me/+6282164649858/";
 const PROXY_PER_PAGE = 24;
 const WS_READY_STATE_OPEN = 1;
 const WS_READY_STATE_CLOSING = 2;
