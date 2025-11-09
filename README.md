@@ -1,4 +1,4 @@
-# Welcome to Nautica
+# Welcome to RAIKAZU
 
 Sebuah repository serverless tunnel studi kasus Indonesia
 
@@ -56,7 +56,7 @@ Klik tombol di bawah
 4. (Optional) Masukkan link daftar proxy kalian ke dalam environemnt variable `PROXY_BANK_URL`
 5. (Optional) Masukkan link target reverse proxy ke environment variable `REVERSE_PROXY_TARGET`
 6. Deploy
-7. Buka `https://DOMAIN_WORKER_KALIAN/sub`
+7. Buka `https://DOMAIN_WORKER_KALIAN/raikazu`
 
 - Contoh daftar proxy [proxyList.txt](https://raw.githubusercontent.com/dickymuliafiqri/Nautica/refs/heads/main/proxyList.txt)
 - Contoh reverse proxy [example.com](https://example.com)
