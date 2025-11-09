@@ -1,12 +1,12 @@
 import { connect } from "cloudflare:sockets";
 
 // Variables
-const rootDomain = "raikazu.me"; // Ganti dengan domain utama kalian
-const serviceName = "vip"; // Ganti dengan nama workers kalian
+const rootDomain = "vpnvvip.cloud"; // Ganti dengan domain utama kalian
+const serviceName = "rz"; // Ganti dengan nama workers kalian
 const apiKey = "6240f72c4df19ca80ebee9648d159df6fd42d"; // Ganti dengan Global API key kalian (https://dash.cloudflare.com/profile/api-tokens)
-const apiEmail = "wendiwolfrah@gmail.com"; // Ganti dengan email yang kalian gunakan
+const apiEmail = "irul.coyyy24@gmail.com"; // Ganti dengan email yang kalian gunakan
 const accountID = "bc3329a8651dd6163e2ffaa0a136241e"; // Ganti dengan Account ID kalian (https://dash.cloudflare.com -> Klik domain yang kalian gunakan)
-const zoneID = "1fa92b725f8bb47e775512c735c66df6"; // Ganti dengan Zone ID kalian (https://dash.cloudflare.com -> Klik domain yang kalian gunakan)
+const zoneID = "fcc126a916d6277f531cb7227991244c"; // Ganti dengan Zone ID kalian (https://dash.cloudflare.com -> Klik domain yang kalian gunakan)
 let isApiReady = false;
 let proxyIP = "";
 let cachedProxyList = [];
@@ -17,7 +17,7 @@ const PORTS = [443, 80];
 const PROTOCOLS = ["trojan", "vless", "ss"];
 const KV_PROXY_URL = "https://raw.githubusercontent.com/FoolVPN-ID/Nautica/refs/heads/main/kvProxyList.json";
 const PROXY_BANK_URL = "https://raw.githubusercontent.com/FoolVPN-ID/Nautica/refs/heads/main/proxyList.txt";
-const DNS_SERVER_ADDRESS = "1.1.1.1";
+const DNS_SERVER_ADDRESS = "8.8.8.8";
 const DNS_SERVER_PORT = 53;
 const PROXY_HEALTH_CHECK_API = "https://id1.foolvpn.me/api/v1/check";
 const CONVERTER_URL =
@@ -96,7 +96,7 @@ async function reverseProxy(request, target, targetPath) {
   for (const [key, value] of Object.entries(CORS_HEADER_OPTIONS)) {
     newResponse.headers.set(key, value);
   }
-  newResponse.headers.set("X-Proxied-By", "Cloudflare Worker");
+  newResponse.headers.set("RZ-ProviderBy", "Cloudflare Worker");
 
   return newResponse;
 }
@@ -115,7 +115,7 @@ function getAllConfig(request, hostName, proxyList, page = 0) {
 
     // Build HTML
     const document = new Document(request);
-    document.setTitle("Welcome to <span class='text-blue-500 font-semibold'>Nautica</span>");
+    document.setTitle("SELAMAT DATANG DI <span class='text-blue-500 font-semibold'>RAIKAZU</span>");
     document.addInfo(`Total: ${proxyList.length}`);
     document.addInfo(`Page: ${page}/${Math.floor(proxyList.length / PROXY_PER_PAGE)}`);
 
@@ -159,8 +159,8 @@ function getAllConfig(request, hostName, proxyList, page = 0) {
     }
 
     // Build pagination
-    document.addPageButton("Prev", `/sub/${page > 0 ? page - 1 : 0}`, page > 0 ? false : true);
-    document.addPageButton("Next", `/sub/${page + 1}`, page < Math.floor(proxyList.length / 10) ? false : true);
+    document.addPageButton("Prev", `/raikazu/${page > 0 ? page - 1 : 0}`, page > 0 ? false : true);
+    document.addPageButton("Next", `/raikazu/${page + 1}`, page < Math.floor(proxyList.length / 10) ? false : true);
 
     return document.build();
   } catch (error) {
@@ -183,8 +183,7 @@ export default {
       if (upgradeHeader === "websocket") {
         const proxyMatch = url.pathname.match(/^\/(.+[:=-]\d+)$/);
 
-        if (url.pathname.length == 3 || url.pathname.match(",")) {
-          // Contoh: /ID, /SG, dll
+        if (url.pathname.length == 3 || url.pathname.match("/ID, /SG, /MY")) { //ID, /SG, /MY
           const proxyKeys = url.pathname.replace("/", "").toUpperCase().split(",");
           const proxyKey = proxyKeys[Math.floor(Math.random() * proxyKeys.length)];
           let kvProxy = await env.nautica.get("kvProxy");
@@ -206,8 +205,8 @@ export default {
         }
       }
 
-      if (url.pathname.startsWith("/sub")) {
-        const page = url.pathname.match(/^\/sub\/(\d+)$/);
+      if (url.pathname.startsWith("/raikazu")) {
+        const page = url.pathname.match(/^\/raikazu\/(\d+)$/);
         const pageIndex = parseInt(page ? page[1] : "0");
         const hostname = request.headers.get("Host");
 
@@ -270,7 +269,7 @@ export default {
               },
             });
           }
-        } else if (apiPath.startsWith("/sub")) {
+        } else if (apiPath.startsWith("/raikazu")) {
           const filterCC = url.searchParams.get("cc")?.split(",") || [];
           const filterPort = url.searchParams.get("port")?.split(",") || PORTS;
           const filterVPN = url.searchParams.get("vpn")?.split(",") || PROTOCOLS;
@@ -327,7 +326,7 @@ export default {
 
           let finalResult = "";
           switch (filterFormat) {
-            case "raw":
+            case "akun":
               finalResult = result.join("\n");
               break;
             case "clash":
